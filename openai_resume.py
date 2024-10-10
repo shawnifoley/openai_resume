@@ -14,7 +14,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def read_file(file_path):
     """Read the content of a file."""
-    with open(file_path, "r") as file:
+    with open(file_path, "r", encoding="utf-8") as file:
         return file.read()
 
 
@@ -74,7 +74,7 @@ def main():
     print(resume)
 
     # Save the resume to a file in markdown format
-    with open(generated_resume, "w") as file:
+    with open(generated_resume, "w", encoding="utf-8") as file:
         file.write(resume)
     print("\nResume saved to " + generated_resume)
 
