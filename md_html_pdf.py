@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import os
-import mistune
 import sys
+
+import mistune
 import pdfkit
 
 

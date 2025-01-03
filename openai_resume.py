@@ -11,12 +11,10 @@ load_dotenv()
 # Set up OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-
 def read_file(file_path):
     """Read the content of a file."""
     with open(file_path, "r", encoding="utf-8") as file:
         return file.read()
-
 
 def generate_resume(resume_md, job_description):
     """Generate a resume using OpenAI's GPT model."""
