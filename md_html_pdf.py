@@ -16,8 +16,9 @@ def read_file(filename):
 def md_to_html_to_pdf(md_file):
     """Write HTML/PDF content to a file."""
 
-    resume_html = md_file + ".html"
-    resume_pdf = md_file + ".pdf"
+    basename = md_file.replace(".md", "")
+    resume_html = basename + ".html"
+    resume_pdf = basename + ".pdf"
 
     extras = ["cuddled-lists", "tables", "footnotes"]
     md_content = read_file(md_file)
