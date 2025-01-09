@@ -3,8 +3,8 @@
 import os
 import sys
 
-import mistune
-import pdfkit
+from markdown2 import markdown
+from weasyprint import HTML, CSS
 
 
 def read_file(filename):
@@ -13,22 +13,26 @@ def read_file(filename):
         return file.read()
 
 
-def convert_markdown_to_html(markdown_content):
-    """Convert Markdown content to HTML."""
-    return mistune.markdown(markdown_content)
+def md_to_html_to_pdf(md_file):
+    """Write HTML/PDF content to a file."""
 
+    resume_html = md_file + ".html"
+    resume_pdf = md_file + ".pdf"
 
-def write_html_file(html_content, output_file):
-    """Write HTML content to a file."""
-    with open(output_file, "w", encoding="utf-8") as file:
+    extras = ["cuddled-lists", "tables", "footnotes"]
+    md_content = read_file(md_file)
+
+    html_content = markdown(md_content, extras=extras)
+    with open(resume_html, "w", encoding="utf-8") as file:
         file.write(html_content)
-    print("\nResume saved to " + output_file)
+    print("\nResume saved to " + resume_html)
+    html = HTML(string=html_content)
 
+    css = [CSS(filename="pdf.css")]
+    html.write_pdf(resume_pdf, stylesheets=css)
+    print("\nResume saved to " + resume_pdf)
 
-def convert_html_to_pdf(input_html, output_pdf):
-    """Write PDF content to a file."""
-    pdfkit.from_string(input_html, output_pdf)
-    print("\nResume saved to " + output_pdf)
+    return
 
 
 def main():
@@ -39,12 +43,8 @@ def main():
     if not os.path.exists(sys.argv[1]):
         raise FileNotFoundError("The file " + sys.argv[1] + " does not exist")
 
-    resume_content = read_file(sys.argv[1])
-    resume_html = sys.argv[1] + ".html"
-    resume_pdf = sys.argv[1] + ".pdf"
-    html_content = convert_markdown_to_html(resume_content)
-    write_html_file(html_content, resume_html)
-    convert_html_to_pdf(html_content, resume_pdf)
+    md_file = sys.argv[1]
+    md_to_html_to_pdf(md_file)
 
 
 if __name__ == "__main__":

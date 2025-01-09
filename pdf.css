@@ -1,0 +1,112 @@
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.17em;
+}
+h5 {
+    font-size: 0.83em;
+}
+h6 {
+    font-size: 0.75em;
+}
+.footnote {
+    font-size: 0.8em;
+}
+
+@page {
+    margin: 1.5cm, 5cm, 1.5cm, 1.5cm;
+    border: 0pt solid white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 120%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+hr {
+    margin: 1em, 0, 0, 0;
+}
+
+p {
+    margin: 0, 0, 1em, 0;
+}
+
+pre,
+code,
+kbd,
+samp,
+tt {
+    /*font-size: 10px;*/
+    color: #333333;
+}
+
+h1 {
+    /*font-size: 26px;*/
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    color: #446cb3;
+}
+
+h2 {
+    font-weight: bold;
+    /*font-size: 14px;*/
+}
+
+a {
+    text-decoration: none;
+    color: #d35400;
+}
+
+img {
+    width: 500px;
+    height: auto;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+table {
+    width: 65%;
+    -pdf-keep-with-next: true;
+}
+
+th {
+    color: #ffffff;
+    background: #051f43;
+    padding: 3px;
+    text-align: left;
+    vertical-align: top;
+    border: 0px solid #fff;
+}
+
+tr {
+    color: #000000;
+    font-weight: normal;
+    border-color: transparent;
+    border: 2px solid #fff;
+}
+
+td {
+    background-color: #d6d6d6;
+    padding: 4px;
+    text-align: left;
+    vertical-align: top;
+    border: 0px solid #fff;
+}
